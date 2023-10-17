@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace GUI.Models;
 
@@ -11,5 +12,14 @@ public partial class Item
 
     public string Color { get; set; }
 
-    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+    public virtual BindingList<OrderDetail> OrderDetails { get; set; } = new BindingList<OrderDetail>();
+
+    public override string ToString()
+    {
+        return "Item{" +
+                "itemId='" + ItemId + '\'' +
+                ", itemName='" + ItemName + '\'' +
+                ", color='" + Color + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace GUI.Models;
 
@@ -13,5 +14,15 @@ public partial class Customer
 
     public string Address { get; set; }
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    public virtual BindingList<Order> Orders { get; set; } = new BindingList<Order>();
+
+    public override string ToString()
+    {
+        return "Customer{" +
+                "custId='" + CustId + '\'' +
+                ", custName='" + CustName + '\'' +
+                ", email='" + Email + '\'' +
+                ", address='" + Address + '\'' +
+                '}';
+    }
 }

@@ -18,4 +18,15 @@ public partial class OrderDetail
     public virtual Item Item { get; set; }
 
     public virtual Order Order { get; set; }
+
+    public override string ToString()
+    {
+        return "OrderDetail{" +
+                "id='" + Id + '\'' +
+                ", orderId='" + OrderId + '\'' +
+                ", itemId='" + ItemId + '\'' +
+                ", quantity=" + Quantity +
+                ", unitAmount=" + UnitAmount +
+                '}';
+    }
 }
