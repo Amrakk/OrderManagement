@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    var userName = ViewBag.UserName != null ? ViewBag.UserName : "Noname";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @userName</h1>
+</div>
