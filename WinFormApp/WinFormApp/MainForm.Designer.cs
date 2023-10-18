@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            reportOnCurrentOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             customersBindingSource = new System.Windows.Forms.BindingSource(components);
@@ -52,9 +53,17 @@
             // 
             // reportToolStripMenuItem
             // 
+            reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { reportOnCurrentOrderToolStripMenuItem });
             reportToolStripMenuItem.Name = "reportToolStripMenuItem";
             reportToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             reportToolStripMenuItem.Text = "Report";
+            // 
+            // reportOnCurrentOrderToolStripMenuItem
+            // 
+            reportOnCurrentOrderToolStripMenuItem.Name = "reportOnCurrentOrderToolStripMenuItem";
+            reportOnCurrentOrderToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            reportOnCurrentOrderToolStripMenuItem.Text = "Report on current Order";
+            reportOnCurrentOrderToolStripMenuItem.Click += reportOnCurrentOrderToolStripMenuItem_Click;
             // 
             // filterToolStripMenuItem
             // 
@@ -101,6 +110,7 @@
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
             Text = "MainForm";
+            FormClosed += MainForm_FormClosed;
             Load += MainForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -123,5 +133,6 @@
         private System.Windows.Forms.BindingSource itemsBindingSource;
         private System.Windows.Forms.BindingSource ordersBindingSource;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.ToolStripMenuItem reportOnCurrentOrderToolStripMenuItem;
     }
 }

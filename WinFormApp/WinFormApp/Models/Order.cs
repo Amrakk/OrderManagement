@@ -22,7 +22,7 @@ public partial class Order
                 "orderId='" + OrderId + '\'' +
                 ", orderDate=" + OrderDate +
                 ", custId='" + CustId + '\'' +
-                ", cust=" + Cust +
+                ", cust=" + Cust.ToString() +
                 ", orderDetails=" + OrderDetails.ToString() +
                 '}';
     }

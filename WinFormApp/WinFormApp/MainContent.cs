@@ -26,6 +26,8 @@ namespace GUI
             InitializeComponent();
         }
 
+        public string CurrentOrderID { get { return currentOrder?.OrderId; } }
+
         #region Load Data
         private void gridItem_Load(object sender, EventArgs e)
         {

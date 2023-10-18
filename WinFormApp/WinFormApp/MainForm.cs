@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using DevExpress.DataAccess.Native;
+using WinFormApp;
 
 namespace GUI
 {
@@ -42,6 +43,19 @@ namespace GUI
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new MainContent());
+        }
+
+        private void reportOnCurrentOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentChildForm != null && currentChildForm is MainContent && (currentChildForm as MainContent).CurrentOrderID != null)
+                OpenChildForm(new ReportForm((currentChildForm as MainContent).CurrentOrderID));
+            else
+                XtraMessageBox.Show("Please select an order first!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 
