@@ -7368,9 +7368,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\MyProject\\C#\\Assignment\\OrderManagement\\WinFormApp\\WinFormApp\\GUI.csproj",
-      "projectName": "GUI",
-      "projectPath": "E:\\MyProject\\C#\\Assignment\\OrderManagement\\WinFormApp\\WinFormApp\\GUI.csproj",
+      "projectUniqueName": "E:\\MyProject\\C#\\Assignment\\OrderManagement\\WinFormApp\\WinFormApp\\WinFormApp.csproj",
+      "projectName": "WinFormApp",
+      "projectPath": "E:\\MyProject\\C#\\Assignment\\OrderManagement\\WinFormApp\\WinFormApp\\WinFormApp.csproj",
       "packagesPath": "C:\\Users\\hoang\\.nuget\\packages\\",
       "outputPath": "E:\\MyProject\\C#\\Assignment\\OrderManagement\\WinFormApp\\WinFormApp\\obj\\",
       "projectStyle": "PackageReference",

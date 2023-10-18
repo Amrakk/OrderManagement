@@ -18,6 +18,7 @@
       "D:\\Microsoft Visual Studio\\2022\\Shared\\NuGetPackages"
     ],
     "configProperties": {
+      "System.Reflection.NullabilityInfoContext.IsSupported": true,
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
     }
   }

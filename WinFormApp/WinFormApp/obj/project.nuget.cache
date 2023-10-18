@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DToqeu10WRBR20UgDVOHMrkz75dxpLJE6DsXl3MfE20xzCfsScU/skOmnsnKGnle4AwStF83e1L/9AfshF+u7A==",
+  "dgSpecHash": "xh8Xs9sfWjvJ4ZESpMcbgoYlZDs5vChuKaLPcfg6gZYnndoC1RNqY0NWi5CLpk2UzeD7XlTcL/mvGTzV+tXgzQ==",
   "success": true,
-  "projectFilePath": "E:\\MyProject\\C#\\Assignment\\OrderManagement\\WinFormApp\\WinFormApp\\GUI.csproj",
+  "projectFilePath": "E:\\MyProject\\C#\\Assignment\\OrderManagement\\WinFormApp\\WinFormApp\\WinFormApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hoang\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\hoang\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

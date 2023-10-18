@@ -29,15 +29,13 @@
         private void InitializeComponent()
         {
             label1 = new System.Windows.Forms.Label();
-            textEmail = new DevExpress.XtraEditors.TextEdit();
+            txtEmail = new DevExpress.XtraEditors.TextEdit();
             labelEmail = new System.Windows.Forms.Label();
             labelPassword = new System.Windows.Forms.Label();
-            textPassword = new DevExpress.XtraEditors.TextEdit();
+            txtPassword = new DevExpress.XtraEditors.TextEdit();
             btnSignin = new DevExpress.XtraEditors.SimpleButton();
-            label2 = new System.Windows.Forms.Label();
-            labelEmailWarning = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)textEmail.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)textPassword.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtEmail.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtPassword.Properties).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -50,21 +48,21 @@
             label1.TabIndex = 0;
             label1.Text = "Signin to OM";
             // 
-            // textEmail
+            // txtEmail
             // 
-            textEmail.Location = new System.Drawing.Point(141, 124);
-            textEmail.Name = "textEmail";
-            textEmail.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textEmail.Properties.Appearance.Options.UseFont = true;
-            textEmail.Properties.AutoHeight = false;
-            textEmail.Size = new System.Drawing.Size(234, 44);
-            textEmail.TabIndex = 1;
+            txtEmail.Location = new System.Drawing.Point(141, 137);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtEmail.Properties.Appearance.Options.UseFont = true;
+            txtEmail.Properties.AutoHeight = false;
+            txtEmail.Size = new System.Drawing.Size(234, 44);
+            txtEmail.TabIndex = 0;
             // 
             // labelEmail
             // 
             labelEmail.AutoSize = true;
             labelEmail.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            labelEmail.Location = new System.Drawing.Point(141, 103);
+            labelEmail.Location = new System.Drawing.Point(141, 116);
             labelEmail.Name = "labelEmail";
             labelEmail.Size = new System.Drawing.Size(41, 18);
             labelEmail.TabIndex = 3;
@@ -80,16 +78,16 @@
             labelPassword.TabIndex = 5;
             labelPassword.Text = "Password";
             // 
-            // textPassword
+            // txtPassword
             // 
-            textPassword.Location = new System.Drawing.Point(141, 223);
-            textPassword.Name = "textPassword";
-            textPassword.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textPassword.Properties.Appearance.Options.UseFont = true;
-            textPassword.Properties.AutoHeight = false;
-            textPassword.Properties.PasswordChar = '●';
-            textPassword.Size = new System.Drawing.Size(234, 44);
-            textPassword.TabIndex = 4;
+            txtPassword.Location = new System.Drawing.Point(141, 223);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtPassword.Properties.Appearance.Options.UseFont = true;
+            txtPassword.Properties.AutoHeight = false;
+            txtPassword.Properties.PasswordChar = '●';
+            txtPassword.Size = new System.Drawing.Size(234, 44);
+            txtPassword.TabIndex = 1;
             // 
             // btnSignin
             // 
@@ -98,46 +96,25 @@
             btnSignin.Location = new System.Drawing.Point(141, 306);
             btnSignin.Name = "btnSignin";
             btnSignin.Size = new System.Drawing.Size(234, 44);
-            btnSignin.TabIndex = 6;
+            btnSignin.TabIndex = 2;
             btnSignin.Text = "SIGNIN";
-            // 
-            // label2
-            // 
-            label2.ForeColor = System.Drawing.Color.Red;
-            label2.Location = new System.Drawing.Point(141, 270);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(237, 30);
-            label2.TabIndex = 7;
-            label2.Text = "Required";
-            label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelEmailWarning
-            // 
-            labelEmailWarning.ForeColor = System.Drawing.Color.Red;
-            labelEmailWarning.Location = new System.Drawing.Point(141, 171);
-            labelEmailWarning.Name = "labelEmailWarning";
-            labelEmailWarning.Size = new System.Drawing.Size(234, 30);
-            labelEmailWarning.TabIndex = 8;
-            labelEmailWarning.Text = "Required";
-            labelEmailWarning.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            btnSignin.Click += btnSignin_Click;
             // 
             // Signin
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(513, 402);
-            Controls.Add(labelEmailWarning);
-            Controls.Add(label2);
             Controls.Add(btnSignin);
             Controls.Add(labelPassword);
-            Controls.Add(textPassword);
+            Controls.Add(txtPassword);
             Controls.Add(labelEmail);
-            Controls.Add(textEmail);
+            Controls.Add(txtEmail);
             Controls.Add(label1);
             Name = "Signin";
             Text = "Signin";
-            ((System.ComponentModel.ISupportInitialize)textEmail.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)textPassword.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtEmail.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtPassword.Properties).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,13 +122,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private DevExpress.XtraEditors.TextEdit textEmail;
+        private DevExpress.XtraEditors.TextEdit txtEmail;
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Label labelPassword;
-        private DevExpress.XtraEditors.TextEdit textPassword;
+        private DevExpress.XtraEditors.TextEdit txtPassword;
         private DevExpress.XtraEditors.SimpleButton btnSignin;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labelEmailWarning;
     }
 }
 

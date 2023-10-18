@@ -15,9 +15,13 @@
     <SourceRoot Include="D:\Microsoft Visual Studio\2022\Shared\NuGetPackages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\7.0.12\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\7.0.12\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\7.0.12\build\net6.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\7.0.12\build\net6.0\Microsoft.EntityFrameworkCore.Design.props')" />
     <Import Project="D:\DevExpress 23.1\Components\Offline Packages\devexpress.data.desktop\23.1.5\build\netcoreapp3.0\DevExpress.Data.Desktop.props" Condition="Exists('D:\DevExpress 23.1\Components\Offline Packages\devexpress.data.desktop\23.1.5\build\netcoreapp3.0\DevExpress.Data.Desktop.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\hoang\.nuget\packages\microsoft.entityframeworkcore.tools\7.0.12</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">C:\Users\hoang\.nuget\packages\entityframework\6.2.0</PkgEntityFramework>
     <PkgDevExpress_Data Condition=" '$(PkgDevExpress_Data)' == '' ">D:\DevExpress 23.1\Components\Offline Packages\devexpress.data\23.1.5</PkgDevExpress_Data>
     <PkgDevExpress_Xpo Condition=" '$(PkgDevExpress_Xpo)' == '' ">D:\DevExpress 23.1\Components\Offline Packages\devexpress.xpo\23.1.5</PkgDevExpress_Xpo>
     <PkgDevExpress_Utils Condition=" '$(PkgDevExpress_Utils)' == '' ">D:\DevExpress 23.1\Components\Offline Packages\devexpress.utils\23.1.5</PkgDevExpress_Utils>

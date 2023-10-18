@@ -179,7 +179,7 @@ namespace GUI
         {
             var orderDetails = gridOrderDetail.DataSource as BindingList<OrderDetail>;
             var orderID = txtOrderID.Text;
-            var customerID = txtOrderCustomerID.EditValue.ToString();
+            var customerID = txtOrderCustomerID.EditValue?.ToString();
             var orderDate = txtOrderDate.Text;
 
             if (string.IsNullOrEmpty(orderID) || string.IsNullOrEmpty(customerID) || string.IsNullOrEmpty(orderDate.ToString()))
@@ -316,10 +316,9 @@ namespace GUI
         private void btnEditOrder_Click(object sender, EventArgs e)
         {
             var orderID = txtOrderID.Text;
-            var customerID = txtOrderCustomerID.EditValue.ToString();
             var orderDate = txtOrderDate.Text;
+            var customerID = txtOrderCustomerID.EditValue?.ToString();
 
-            MessageBox.Show(orderDate);
             if (string.IsNullOrEmpty(orderID) || string.IsNullOrEmpty(customerID) || string.IsNullOrEmpty(orderDate.ToString()))
             {
                 XtraMessageBox.Show("Please fill all the fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
