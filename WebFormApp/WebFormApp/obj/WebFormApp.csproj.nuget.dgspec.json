@@ -13,8 +13,14 @@
         "packagesPath": "C:\\Users\\hoang\\.nuget\\packages\\",
         "outputPath": "E:\\MyProject\\C#\\Assignment\\OrderManagement\\WebFormApp\\WebFormApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\DevExpress 23.1\\Components\\Offline Packages",
+          "D:\\Microsoft Visual Studio\\2022\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\hoang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.1.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +28,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
+          "D:\\DevExpress 23.1\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,10 +50,6 @@
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
-            },
-            "JWT": {
-              "target": "Package",
-              "version": "[10.1.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

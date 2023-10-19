@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Data.Entity;
+﻿using System.Net;
+using System.Net.Mail;
 using WebFormApp.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebFormApp.Controllers
 {
@@ -24,32 +26,53 @@ namespace WebFormApp.Controllers
         public async Task<IActionResult> Signin(string email, string password)
         {
             if (_context.Users == null)
-            {
-                return Problem("Entity set 'OrderManagementContext.Users'  is null.");
-            }
-            foreach(User u in _context.Users)
-            {
-                   Console.WriteLine(u.Email);
-            }
+                return Problem("Entity set 'OrderManagementContext.Users' is null.");
+
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
 
             if (user != null)
             {
                 if (user.Password == password)
                 {
-                    // create a jwt tokenID and create a URL to redirect to
-                    // string tokenID
-                    // string redirectURL = "https://localhost:5001/Orders?tokenID=" + tokenID;
+                    var userId = user.UserId;
+                    var url = $"{Request.Scheme}://{Request.Host}/Home/?id={userId}";
 
-                    var tokenID = Guid.NewGuid().ToString();
+                    if(url == null)
+                        return Problem("Url.Action() returned null.");
 
-                    // redirect to Home/Index with tokenID
-                    return RedirectToAction("Index", "Home", new { id = tokenID });
+                    try { SendWorkplaceAccessEmail(user.Email, url); }
+                    catch (Exception ex) { return Problem(ex.Message); }
+
+                    ViewBag.ErrorMessage = "";
+                    ViewBag.SuccessMessage = "Please check your email for workplace access instructions.";
                 }
-                return Unauthorized("Invalid password");
+                else ViewBag.ErrorMessage = "Invalid Credentials";
             }
-            return Unauthorized("Invalid email");
+            else ViewBag.ErrorMessage = "Invalid Credentials";
+
+            return View();
         }
+
+        private void SendWorkplaceAccessEmail(string userEmail, string url)
+        {
+            SmtpClient emailService = new SmtpClient();
+            emailService.Port = 587;
+            emailService.Host = "smtp.gmail.com";
+            emailService.EnableSsl = true;
+            emailService.UseDefaultCredentials = false;
+            emailService.Credentials = new NetworkCredential("amrakk.dev@gmail.com", "ndqblzebjdnomdku");
+            emailService.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress("amrakk.dev@gmail.com");
+            message.To.Add(userEmail);
+            message.Subject = "Workplace Access Link";
+            message.IsBodyHtml = true;
+            message.Body = $"Click the following link to access your workplace: <a href='{url}'>Access Workplace</a>";
+
+            emailService.Send(message);
+        }
+
 
     }
 }

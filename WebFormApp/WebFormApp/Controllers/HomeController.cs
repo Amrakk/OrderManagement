@@ -7,17 +7,22 @@ namespace WebFormApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly OrderManagementContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, OrderManagementContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index(string? id)
         {
-            // if id = null, redirect to /Auth/Signin
-            if (id == null)
-                return RedirectToAction("Signin", "Auth");
+            if (id == null) return RedirectToAction("Signin", "Auth");
+
+            var user = _context.Users.Find(id);
+            if (user == null) return RedirectToAction("Signin", "Auth");
+
+            ViewBag.Email = user.Email;
 
             return View();
         }

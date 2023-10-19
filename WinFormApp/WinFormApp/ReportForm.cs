@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WinFormApp
 {
-    public partial class ReportForm : DevExpress.XtraEditors.XtraForm
+    public partial class ReportForm : XtraForm
     {
         private string orderID;
         private OrderReport report;
@@ -32,8 +32,7 @@ namespace WinFormApp
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            // Print the document as pdf file
-            string pdfFilePath = ".\\PDF\\OrderReport.pdf"; // Provide the correct path to your PDF file
+            string pdfFilePath = ".\\PDF\\OrderReport.pdf";
 
             report.ExportToPdf(pdfFilePath);
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
