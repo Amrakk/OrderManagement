@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -35,7 +38,10 @@ namespace WebFormApp.Controllers
 
             var order = await _context.Orders
                 .Include(o => o.Cust)
+                .Include(o => o.OrderDetails)
+                .ThenInclude(od => od.Item)
                 .FirstOrDefaultAsync(m => m.OrderId == id);
+
             if (order == null)
             {
                 return NotFound();
@@ -161,7 +167,8 @@ namespace WebFormApp.Controllers
 
         private bool OrderExists(string id)
         {
-          return (_context.Orders?.Any(e => e.OrderId == id)).GetValueOrDefault();
+            return (_context.Orders?.Any(e => e.OrderId == id)).GetValueOrDefault();
         }
+
     }
 }

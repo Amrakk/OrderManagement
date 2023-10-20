@@ -4,27 +4,184 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<style>
+    body {
+        margin-top: 20px;
+        background: #eee;
+    }
+
+    .main-form {
+        padding: 30px;
+    }
+
+        .main-form h2 {
+            margin-top: 0px;
+            line-height: 0.8em;
+        }
+
+        .main-form .small {
+            font-weight: 300;
+        }
+
+        .main-form hr {
+            margin-top: 10px;
+            border-color: #ddd;
+        }
+
+        .main-form .table tr.line {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .main-form .table td {
+            border: none;
+        }
+
+        .main-form .identity {
+            margin-top: 10px;
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+            .main-form .identity strong {
+                font-weight: 600;
+            }
+
+    td .form-control {
+        display: inline;
+    }
+
+    .form-control.quantity {
+        max-width: 25%;
+    }
+
+    .drop-down {
+        max-width: 75%;
+    }
+
+    .label-custom {
+        display: flex;
+    }
+
+    .grid {
+        position: relative;
+        width: 100%;
+        background: #fff;
+        color: #666666;
+        border-radius: 2px;
+        margin-bottom: 25px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<h1>Order</h1>
 
 <div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OrderDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OrderDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cust)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cust.CustId)
-        </dd>
-    </dl>
+    <div class="container">
+
+        <div class="text-right" style="margin-bottom: 10px;">
+            <button onclick="printToPDF()" class="btn btn-primary">Print</button>
+        </div>
+
+        <div class="grid main-form" id="main-content">
+            <div class="grid-body">
+                <div id="customer-info">
+                    <div class="customer-title">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3>Customer Information</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="label-custom">
+                                <label style="margin-right: 10px;">Name:</label>
+                                <p>@Model.Cust.CustName</p>
+                            </div>
+                            <div class="label-custom">
+                                <label style="margin-right: 10px;">Email:</label>
+                                <p>@Model.Cust.Email</p>
+                            </div>
+                            <div class="label-custom">
+                                <label style="margin-right: 10px;">Address:</label>
+                                <p>@Model.Cust.Address</p>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <div class="text-right">
+                                <strong>Order ID:</strong>
+                                <p>@Model.OrderId</p>
+                                <br />
+                                <p>
+                                    <strong>Order Date:</strong><br>
+                                <p>@Model.OrderDate</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="line-break">
+                    <br />
+                    <br />
+                </div>
+
+                <div class="product-table row">
+                    <div class="col-md-12">
+                        <table id="productTable" class="table table-striped">
+                            <thead>
+                                <tr class="line">
+                                    <td colspan="5"><strong>ITEM NAME</strong></td>
+                                    <td colspan="3"><strong>QUANTITY</strong></td>
+                                    <td colspan="4"><strong>UNIT AMOUNT</strong></td>
+                                    <td colspan="4"><strong>TOTAL PRICE</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(OrderDetail detail in Model.OrderDetails) 
+                                {
+                                    <tr>
+                                        <td colspan="5">@detail.Item.ItemName</td>
+                                        <td colspan="3">@detail.Quantity</td>
+                                        <td colspan="4">@detail.UnitAmount</td>
+                                        <td colspan="4">@(detail.UnitAmount * detail.Quantity)</td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <td colspan="10"></td>
+                                    <td colspan="2" class="text-right"><strong>TOTAL</strong></td>
+                                    <td colspan="4"><strong id="total-price">
+                                            @Model.OrderDetails.Sum(detail => detail.UnitAmount * detail.Quantity)
+                                    </strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.OrderId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    function printToPDF() {
+        const divToPrint = document.getElementById("content-to-print");
+        const pdf = new jsPDF();
+        pdf.addHTML(divToPrint, function () {
+            pdf.save("content.pdf");
+        });
+    }
+</script>
